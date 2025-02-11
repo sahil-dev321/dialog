@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .modal {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    height:45vh;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .modal-header {
+    margin-bottom: 16px;
+  }
+  
+
+
+  .icon-success {
+    color: #28a745;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10%;
+  }
+  
+  .icon-success svg {
+    width: 10vh;
+    height: 8vh;
+    margin-top: 7%;
+  }
+  
+  h2 {
+    font-size: 200%;
+    font-weight: 200;
+    color: #333;
+    margin: 0;
+  }
+
+  
+
+  
+  .modal-body p {
+    font-size: 100%;
+    color: #555;
+    margin: 0;
+  }
+  
+  .modal-footer {
+    display: flex;
+    flex-direction: column;
+    
+    align-items: center;
+    gap: 1vh;
+  }
+  
+  .btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+
+  }
+  
+  .btn.primary {
+    background-color: #012B53;
+    color: #fff;
+    height: 4.25vh;
+    width: 23vw;
+  }
+  
+  .btn.secondary {
+    background-color: #FFFFFF;
+    color: #333;
+    border: 1px solid #012B53;
+    height: 4.25vh;
+    width: 23vw;
+  }
+  

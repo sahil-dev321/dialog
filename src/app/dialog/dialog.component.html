@@ -1,0 +1,288 @@
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
+</button>
+
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Create Model Portfolio</title>
+          <link rel="stylesheet" href="dialog.component.scss" />
+        </head>
+        <body>
+          <div class="container">
+            <h1>Create new Model portfolio</h1>
+
+            <div class="progress-bar" aria-label="Progress Bar">
+              <div class="step active" aria-hidden="true"></div>
+              <div class="step"></div>
+              <div class="step"></div>
+            </div>
+            <p class="step-text">Step 1 of 3</p>
+
+            <main class="form-section">
+              <h2>Portfolio Details</h2>
+              <p>
+                Log in to access your account and continue where you left off.
+              </p>
+
+              <form class="portfolio-form">
+                <div class="form-group">
+                  <label for="portfolio-name">Portfolio Name</label>
+                  <input
+                    type="text"
+                    id="portfolio-name"
+                    placeholder="Ex: Prime Yield"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="portfolio-description"
+                    >Portfolio Description</label
+                  >
+                  <textarea
+                    id="portfolio-description"
+                    placeholder="Ex: A balanced mix of high-growth equities..."
+                    required
+                  ></textarea>
+                </div>
+              </form>
+            </main>
+          </div>
+
+          <footer class="footer">
+            <button class="exit-btn">Exit</button>
+            <button mat-button matStepperNext class="proceed-btn" >Proceed</button>
+          </footer>
+        </body>
+      </html>
+
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Last name, First name"
+          formControlName="firstCtrl"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Create Model Portfolio</title>
+          <link rel="stylesheet" href="dialog2.component.scss" />
+        </head>
+        <body>
+          <div class="container">
+            <h1>Create new Model portfolio</h1>
+
+            <div class="progress-bar" aria-label="Progress Bar">
+              <div class="step"></div>
+              <div class="step active" aria-hidden="true"></div>
+              <div class="step"></div>
+            </div>
+            <p class="step-text">Step 2 of 3</p>
+
+            <main class="form-section">
+              <h2>Strategy</h2>
+              <p>
+                Log in to access your account and continue where you left off.
+              </p>
+
+              <div class="dropdown-container">
+                <label for="dropdown"
+                  >Assign a strategy for your portfolio
+                  <strong>"Prime Yield"</strong></label
+                >
+                <select id="dropdown" name="-Select Strategy-" class="dropdown">
+                  <option value="" disabled selected>-Select Strategy-</option>
+                  <option value="strategy1">Wealth Horizon</option>
+                  <option value="strategy2">Portfolio Pulse</option>
+                  <option value="strategy3">Asset Ascend</option>
+                  <option value="strategy4">VisionVest</option>
+                </select>
+              </div>
+            </main>
+          </div>
+
+          <footer class="footer">
+            <button class="back-button">
+              <span class="icon">< </span> Back
+            </button>
+            <button class="exit-btn">Exit</button>
+            <button mat-button matStepperNext class="proceed-btn" >Proceed</button>
+          </footer>
+        </body>
+      </html>
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          formControlName="secondCtrl"
+          placeholder="Ex. 1 Main St, New York, NY"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <title>Create Model Portfolio</title>
+          <link rel="stylesheet" href="dialog3.component.scss" />
+        </head>
+        <body>
+          <div class="container">
+            <h1>Create new Model portfolio</h1>
+
+            <div class="progress-bar" aria-label="Progress Bar">
+              <div class="step"></div>
+
+              <div class="step"></div>
+              <div class="step active" aria-hidden="true"></div>
+            </div>
+            <p class="step-text">Step 3 of 3</p>
+
+            <main class="form-section">
+              <h2>Details</h2>
+              <p>
+                Log in to access your account and continue where you left off.
+              </p>
+            </main>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SECTOR</th>
+                    <th>SCRIPT</th>
+                    <th>PORTFOLIO%</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select>
+                        <option>PrimeYield</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select>
+                        <option>PrimeYield</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" value="25%" />
+                    </td>
+                    <td>
+                      <label>
+                        <input type="radio" name="status1" />
+                        Active
+                      </label>
+                      <label>
+                        <input type="radio" name="status1" checked />
+                        Inactive
+                      </label>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <select>
+                        <option>PrimeYield</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select>
+                        <option>PrimeYield</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" value="25%" />
+                    </td>
+                    <td>
+                      <label>
+                        <input type="radio" name="status2" />
+                        Active
+                      </label>
+                      <label>
+                        <input type="radio" name="status2" checked />
+                        Inactive
+                      </label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <footer class="footer">
+            <button class="back-button">
+              <span class="icon">< </span> Back
+            </button>
+            <button mat-raised-button class="exit-btn" (click)="openLeaveDialog()">Exit</button>
+            <button mat-raised-button class="proceed-btn"  (click)="openSuccessDialog()">Create</button>
+          </footer>
+        </body>
+      </html>
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input
+          matInput
+          formControlName="secondCtrl"
+          placeholder="Ex. 1 Main St, New York, NY"
+          required
+        />
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step> -->
+</mat-stepper>

@@ -1,0 +1,10 @@
+<ol>
+    <li>
+      <button mat-raised-button (click)="openDialog()">OPEN</button>
+    </li>
+    @if (animal()) {
+      <li>
+        You chose: <em>{{animal()}}</em>
+      </li>
+    }
+  </ol>

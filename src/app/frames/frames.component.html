@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Model Portfolio</title>
+  <link rel="stylesheet" href="frames.component.scss">
+</head>
+<body>
+  <div class="container">
+    <h1>Create new Model portfolio</h1>
+
+    <div class="progress-bar" aria-label="Progress Bar">
+      <div class="step active" aria-hidden="true"></div>
+      <div class="step"></div>
+      <div class="step"></div>
+    </div>
+    <p class="step-text">Step 1 of 3</p>
+
+    <main class="form-section">
+      <h2>Portfolio Details</h2>
+      <p>Log in to access your account and continue where you left off.</p>
+
+      <form class="portfolio-form">
+        <div class="form-group">
+          <label for="portfolio-name">Portfolio Name</label>
+          <input type="text" id="portfolio-name" placeholder="Ex: Prime Yield" required>
+        </div>
+
+        <div class="form-group">
+          <label for="portfolio-description">Portfolio Description</label>
+          <textarea id="portfolio-description" placeholder="Ex: A balanced mix of high-growth equities..." required></textarea>
+        </div>
+      </form>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <button class="exit-btn">Exit</button>
+    <button class="proceed-btn" disabled>Proceed</button>
+  </footer>
+
+  <script>
+    const nameInput = document.getElementById('portfolio-name');
+    const descriptionInput = document.getElementById('portfolio-description');
+    const proceedBtn = document.querySelector('.proceed-btn');
+
+    function validateForm() {
+      proceedBtn.disabled = !(nameInput.value.trim() && descriptionInput.value.trim());
+    }
+
+    nameInput.addEventListener('input', validateForm);
+    descriptionInput.addEventListener('input', validateForm);
+  </script>
+</body>
+</html>

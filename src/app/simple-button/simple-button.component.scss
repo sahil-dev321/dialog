@@ -1,0 +1,22 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+  
+    .primary-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  
