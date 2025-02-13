@@ -33,10 +33,12 @@
      
       
     </form>
+    <div class="spacer"> </div>
     <footer class="step1-footer">
       <button mat-button class="step1-exit-btn" (click)="openLeaveDialog()">Exit</button>
       <button mat-button matStepperNext class="step1-proceed-btn" [class.enabled]="firstFormGroup.valid">Proceed</button>
     </footer>
+ 
    
   </div>
   
@@ -50,6 +52,7 @@
   <mat-step [stepControl]="secondFormGroup">
     <div class="step2-form-section">
     <form [formGroup]="secondFormGroup">
+      <!-- <form class ="step2-form"[formGroup]="secondFormGroup"> -->
       <h1 class="step2-title">Create New Model Portfolio</h1>
   
       <div class="step2-progress-bar">
@@ -76,11 +79,11 @@
   
   
     </form>
-    <div class="step2-footer">
+    <footer class="step2-footer">
       <button mat-button matStepperPrevious class="step2-back-button">Back</button>
       <button mat-button class="step2-exit-btn" (click)="openLeaveDialog()">Exit</button>
       <button mat-button matStepperNext class="step2-proceed-btn">Proceed</button>
-    </div>
+    </footer>
   </div>
   </mat-step>
   

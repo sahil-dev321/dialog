@@ -49,7 +49,7 @@ export class SimpleButtonComponent {
       DialogOverviewExampleDialog,
 
       {
-        width: '50%',
+        width: '40%',
         maxWidth: '100%',
         height: '80%',
         maxHeight: '100%',
