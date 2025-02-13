@@ -1,6 +1,10 @@
 // Hide the stepper header and navigation
 ::ng-deep mat-stepper {
   display: block;
+  position: absolute;
+  width: 100%;
+  padding: 0px;
+  
 }
 
 ::ng-deep mat-stepper .mat-step-header,
@@ -8,12 +12,22 @@
 ::ng-deep mat-stepper .mat-step-label {
   display: none !important;
 }
+:host ::ng-deep .mat-horizontal-content-container {
+  padding:0 !important;
+  height: 100%;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-wrapper {
+  height: 100% !important;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-content {
+  height: 100% !important;
+}
 
 
 
-
-// Step 1 Container
-
+ 
 
 h1 {
   font-size: clamp(20px, 2.5vw, 24px);
@@ -26,6 +40,9 @@ h1 {
   gap: 10px;
   margin: 15px 0;
   width: 38%;
+}
+.step1-form{
+  padding: 3%;
 }
 
 .step1-step {
@@ -48,6 +65,7 @@ h1 {
 // Form Section for Step 1
 .step1-form-section {
   margin-bottom: 20px;
+  height: 100%;
 }
 
 h2 {
@@ -100,25 +118,21 @@ input:focus, textarea:focus {
   border-color: #4caf50;
 }
 
-// Footer for Step 1
-// .step1-footer {
-//   width: 57vw;
-//   height: 10vh;
-//   background-color: red;
-//   border-top: 1px solid #ddd;
-//   padding: 15px 40px;
-//   display: flex;
-//   justify-content: flex-end;
-//   border-radius: 0 0 12px 12px;
-//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-//   gap: 1.5%;
-// }
+.step1-matStep{
+  height: 100%;
+}
+
 .step1-form-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  
   position: relative;  /* Ensures the footer is positioned relative to this container */
   margin-bottom: 20px;
 }
 .step1-footer {
-  position: absolute;  /* Position at the bottom of the container */
+  position: relative;  /* Position at the bottom of the container */
   bottom: 0;           /* Align it to the bottom */
   width: 100%;         /* Full width of the container */
   height: 10vh;        /* You can adjust this value based on the footer's height */
@@ -190,7 +204,10 @@ $dropdown-border-radius: 8px;
 }
 
 
-
+.step2-form-section {
+  margin-bottom: 20px;
+  height: 100%;
+}
 .step2-title {
   font-size: clamp(20px, 2.5vw, 24px);
   margin-bottom: 20px;

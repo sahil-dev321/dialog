@@ -1,8 +1,8 @@
 
-<mat-stepper linear #stepper>
-  <mat-step [stepControl]="firstFormGroup">
+<mat-stepper class="step1-matStep" #stepper>
+  <mat-step  [stepControl]="firstFormGroup">
     <div class="step1-form-section">
-    <form [formGroup]="firstFormGroup">
+    <form class="step1-form" [formGroup]="firstFormGroup">
       
         <h1>Create New Model Portfolio</h1>
   
@@ -37,7 +37,10 @@
       <button mat-button class="step1-exit-btn" (click)="openLeaveDialog()">Exit</button>
       <button mat-button matStepperNext class="step1-proceed-btn" [class.enabled]="firstFormGroup.valid">Proceed</button>
     </footer>
+   
   </div>
+  
+  
   </mat-step>
   
   
@@ -45,6 +48,7 @@
 
   <!-- Step 2: Strategy Selection -->
   <mat-step [stepControl]="secondFormGroup">
+    <div class="step2-form-section">
     <form [formGroup]="secondFormGroup">
       <h1 class="step2-title">Create New Model Portfolio</h1>
   
@@ -70,12 +74,14 @@
         </mat-select>
       </mat-form-field>
   
-      <div class="step2-footer">
-        <button mat-button matStepperPrevious class="step2-back-button">Back</button>
-        <button mat-button class="step2-exit-btn" (click)="openLeaveDialog()">Exit</button>
-        <button mat-button matStepperNext class="step2-proceed-btn">Proceed</button>
-      </div>
+  
     </form>
+    <div class="step2-footer">
+      <button mat-button matStepperPrevious class="step2-back-button">Back</button>
+      <button mat-button class="step2-exit-btn" (click)="openLeaveDialog()">Exit</button>
+      <button mat-button matStepperNext class="step2-proceed-btn">Proceed</button>
+    </div>
+  </div>
   </mat-step>
   
 

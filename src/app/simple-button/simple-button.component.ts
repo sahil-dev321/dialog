@@ -49,10 +49,10 @@ export class SimpleButtonComponent {
       DialogOverviewExampleDialog,
 
       {
-        width: '60vw',
-        maxWidth: '100vw',
-        height: '85vh',
-        maxHeight: '100vh',
+        width: '50%',
+        maxWidth: '100%',
+        height: '80%',
+        maxHeight: '100%',
         data: { name: this.name(), animal: this.animal() },
       }
     );
