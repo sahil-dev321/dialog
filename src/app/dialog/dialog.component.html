@@ -1,288 +1,148 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-  {{ !isLinear ? "Enable linear mode" : "Disable linear mode" }}
-</button>
 
-<mat-stepper [linear]="isLinear" #stepper>
+<mat-stepper linear #stepper>
   <mat-step [stepControl]="firstFormGroup">
+    <div class="step1-form-section">
     <form [formGroup]="firstFormGroup">
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>Create Model Portfolio</title>
-          <link rel="stylesheet" href="dialog.component.scss" />
-        </head>
-        <body>
-          <div class="container">
-            <h1>Create new Model portfolio</h1>
-
-            <div class="progress-bar" aria-label="Progress Bar">
-              <div class="step active" aria-hidden="true"></div>
-              <div class="step"></div>
-              <div class="step"></div>
+      
+        <h1>Create New Model Portfolio</h1>
+  
+        <div class="step1-progress-bar">
+          <div class="step1-step active"></div>
+          <div class="step1-step"></div>
+          <div class="step1-step"></div>
+        </div>
+        <p class="step1-step-text">Step 1 of 3</p>
+  
+        <main class="step1-form-section">
+          <h2>Portfolio Details</h2>
+          <p>Enter details for your portfolio.</p>
+  
+          <div class="step1-portfolio-form">
+            <div class="step1-form-group">
+              <label for="step1-portfolio-name">Portfolio Name</label>
+              <input matInput formControlName="portfolioName" id="step1-portfolio-name" placeholder="Ex: Prime Yield" required />
             </div>
-            <p class="step-text">Step 1 of 3</p>
+  
+            <div class="step1-form-group">
+              <label for="step1-portfolio-description">Portfolio Description</label>
+              <textarea matInput formControlName="portfolioDescription" id="step1-portfolio-description" placeholder="Ex: A balanced mix of high-growth equities..." required></textarea>
+            </div>
+          </div>
+        </main>
+  
+     
+      
+    </form>
+    <footer class="step1-footer">
+      <button mat-button class="step1-exit-btn" (click)="openLeaveDialog()">Exit</button>
+      <button mat-button matStepperNext class="step1-proceed-btn" [class.enabled]="firstFormGroup.valid">Proceed</button>
+    </footer>
+  </div>
+  </mat-step>
+  
+  
+  
 
-            <main class="form-section">
-              <h2>Portfolio Details</h2>
-              <p>
-                Log in to access your account and continue where you left off.
-              </p>
+  <!-- Step 2: Strategy Selection -->
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <h1 class="step2-title">Create New Model Portfolio</h1>
+  
+      <div class="step2-progress-bar">
+        <div class="step2-progress-step"></div>
+        <div class="step2-progress-step active"></div>
+        <div class="step2-progress-step"></div>
+      </div>
+      <p class="step2-text">Step 2 of 3</p>
+  
+      <h2 class="step2-heading">Strategy</h2>
+      <p class="step2-description">Select a strategy for your portfolio.</p>
+  
+      <mat-form-field class="step2-form-field">
+        <mat-label>Assign a Strategy</mat-label>
+        <mat-select [(value)]="selectedStrategy" (selectionChange)="onStrategyChange($event)">
+          <mat-option value="createStrategy">
+            Create a Strategy and Assign
+          </mat-option>
+          <mat-option *ngFor="let strategy of strategies" [value]="strategy.id">
+            {{ strategy.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <div class="step2-footer">
+        <button mat-button matStepperPrevious class="step2-back-button">Back</button>
+        <button mat-button class="step2-exit-btn" (click)="openLeaveDialog()">Exit</button>
+        <button mat-button matStepperNext class="step2-proceed-btn">Proceed</button>
+      </div>
+    </form>
+  </mat-step>
+  
 
-              <form class="portfolio-form">
-                <div class="form-group">
-                  <label for="portfolio-name">Portfolio Name</label>
-                  <input
-                    type="text"
-                    id="portfolio-name"
-                    placeholder="Ex: Prime Yield"
-                    required
+  <!-- Step 3: Portfolio Details Table -->
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup" class="step3-form">
+      <h1 class="step3-title">Create New Model Portfolio</h1>
+  
+      <div class="step3-progress-bar">
+        <div class="step3-progress-step"></div>
+        <div class="step3-progress-step"></div>
+        <div class="step3-progress-step active"></div>
+      </div>
+      <p class="step3-text">Step 3 of 3</p>
+  
+      <h2 class="step3-heading">Details</h2>
+      <p class="step3-description">Review and finalize your portfolio.</p>
+  
+      <div class="step3-table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>SCRIPT</th>
+              <th>PORTFOLIO%</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>  
+                <mat-form-field appearance="fill" class="step3-mat-form-field">
+                  <mat-label>Select Script</mat-label>
+                  <input 
+                    type="text" 
+                    placeholder="Search script..." 
+                    matInput 
+                    [formControl]="scriptSearchControl"
+                    (keyup)="filterScripts()" 
                   />
-                </div>
-
-                <div class="form-group">
-                  <label for="portfolio-description"
-                    >Portfolio Description</label
-                  >
-                  <textarea
-                    id="portfolio-description"
-                    placeholder="Ex: A balanced mix of high-growth equities..."
-                    required
-                  ></textarea>
-                </div>
-              </form>
-            </main>
-          </div>
-
-          <footer class="footer">
-            <button class="exit-btn">Exit</button>
-            <button mat-button matStepperNext class="proceed-btn" >Proceed</button>
-          </footer>
-        </body>
-      </html>
-
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input
-          matInput
-          placeholder="Last name, First name"
-          formControlName="firstCtrl"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+                  <mat-select formControlName="script">
+                    <mat-option *ngFor="let script of filteredScripts" [value]="script.id">
+                      {{ script.script_name }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+              <td>
+                <input matInput type="text" value="25%" class="step3-portfolio-input" />
+              </td>
+              <td>
+                <mat-radio-group class="step3-status-radio-group">
+                  <mat-radio-button value="active">Active</mat-radio-button>
+                  <mat-radio-button value="inactive" checked>Inactive</mat-radio-button>
+                </mat-radio-group>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <div class="step3-footer">
+        <button mat-button matStepperPrevious class="step3-back-button">Back</button>
+        <button mat-button class="step3-exit-btn" (click)="openLeaveDialog()">Exit</button>
+        <button mat-raised-button class="step3-proceed" (click)="printFormValues()">Create</button>
+        <button mat-raised-button class="step3-proceed-btn" (click)="createModelPortfolio()">Send</button>
       </div>
     </form>
   </mat-step>
-
-  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-    <form [formGroup]="secondFormGroup">
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>Create Model Portfolio</title>
-          <link rel="stylesheet" href="dialog2.component.scss" />
-        </head>
-        <body>
-          <div class="container">
-            <h1>Create new Model portfolio</h1>
-
-            <div class="progress-bar" aria-label="Progress Bar">
-              <div class="step"></div>
-              <div class="step active" aria-hidden="true"></div>
-              <div class="step"></div>
-            </div>
-            <p class="step-text">Step 2 of 3</p>
-
-            <main class="form-section">
-              <h2>Strategy</h2>
-              <p>
-                Log in to access your account and continue where you left off.
-              </p>
-
-              <div class="dropdown-container">
-                <label for="dropdown"
-                  >Assign a strategy for your portfolio
-                  <strong>"Prime Yield"</strong></label
-                >
-                <select id="dropdown" name="-Select Strategy-" class="dropdown">
-                  <option value="" disabled selected>-Select Strategy-</option>
-                  <option value="strategy1">Wealth Horizon</option>
-                  <option value="strategy2">Portfolio Pulse</option>
-                  <option value="strategy3">Asset Ascend</option>
-                  <option value="strategy4">VisionVest</option>
-                </select>
-              </div>
-            </main>
-          </div>
-
-          <footer class="footer">
-            <button class="back-button">
-              <span class="icon">< </span> Back
-            </button>
-            <button class="exit-btn">Exit</button>
-            <button mat-button matStepperNext class="proceed-btn" >Proceed</button>
-          </footer>
-        </body>
-      </html>
-
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
-    <form [formGroup]="secondFormGroup">
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>Create Model Portfolio</title>
-          <link rel="stylesheet" href="dialog3.component.scss" />
-        </head>
-        <body>
-          <div class="container">
-            <h1>Create new Model portfolio</h1>
-
-            <div class="progress-bar" aria-label="Progress Bar">
-              <div class="step"></div>
-
-              <div class="step"></div>
-              <div class="step active" aria-hidden="true"></div>
-            </div>
-            <p class="step-text">Step 3 of 3</p>
-
-            <main class="form-section">
-              <h2>Details</h2>
-              <p>
-                Log in to access your account and continue where you left off.
-              </p>
-            </main>
-            <div class="table-container">
-              <table>
-                <thead>
-                  <tr>
-                    <th>SECTOR</th>
-                    <th>SCRIPT</th>
-                    <th>PORTFOLIO%</th>
-                    <th>STATUS</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <select>
-                        <option>PrimeYield</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select>
-                        <option>PrimeYield</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type="text" value="25%" />
-                    </td>
-                    <td>
-                      <label>
-                        <input type="radio" name="status1" />
-                        Active
-                      </label>
-                      <label>
-                        <input type="radio" name="status1" checked />
-                        Inactive
-                      </label>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <select>
-                        <option>PrimeYield</option>
-                      </select>
-                    </td>
-                    <td>
-                      <select>
-                        <option>PrimeYield</option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type="text" value="25%" />
-                    </td>
-                    <td>
-                      <label>
-                        <input type="radio" name="status2" />
-                        Active
-                      </label>
-                      <label>
-                        <input type="radio" name="status2" checked />
-                        Inactive
-                      </label>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <footer class="footer">
-            <button class="back-button">
-              <span class="icon">< </span> Back
-            </button>
-            <button mat-raised-button class="exit-btn" (click)="openLeaveDialog()">Exit</button>
-            <button mat-raised-button class="proceed-btn"  (click)="openSuccessDialog()">Create</button>
-          </footer>
-        </body>
-      </html>
-
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input
-          matInput
-          formControlName="secondCtrl"
-          placeholder="Ex. 1 Main St, New York, NY"
-          required
-        />
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-
-  <!-- <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step> -->
+  
 </mat-stepper>

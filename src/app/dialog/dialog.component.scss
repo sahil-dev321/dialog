@@ -1,174 +1,493 @@
+// Hide the stepper header and navigation
+::ng-deep mat-stepper {
+  display: block;
+}
+
+::ng-deep mat-stepper .mat-step-header,
+::ng-deep mat-stepper .mat-horizontal-stepper-header-container,
+::ng-deep mat-stepper .mat-step-label {
+  display: none !important;
+}
+
+
+
+
+// Step 1 Container
+
+
+h1 {
+  font-size: clamp(20px, 2.5vw, 24px);
+  margin-bottom: 20px;
+}
+
+// Progress Bar Styling for Step 1
+.step1-progress-bar {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  width: 38%;
+}
+
+.step1-step {
+  flex: 1;
+  height: 1vh;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+.step1-step.active {
+  background-color: #4caf50;
+}
+
+.step1-step-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+// Form Section for Step 1
+.step1-form-section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.step1-portfolio-form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.step1-form-group {
+  flex: 1;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+textarea {
+  resize: none;
+}
+
+#step1-portfolio-description {
+  height: 220px;
+}
+
+input:focus, textarea:focus {
+  border-color: #4caf50;
+}
+
+// Footer for Step 1
+// .step1-footer {
+//   width: 57vw;
+//   height: 10vh;
+//   background-color: red;
+//   border-top: 1px solid #ddd;
+//   padding: 15px 40px;
+//   display: flex;
+//   justify-content: flex-end;
+//   border-radius: 0 0 12px 12px;
+//   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+//   gap: 1.5%;
+// }
+.step1-form-section {
+  position: relative;  /* Ensures the footer is positioned relative to this container */
+  margin-bottom: 20px;
+}
+.step1-footer {
+  position: absolute;  /* Position at the bottom of the container */
+  bottom: 0;           /* Align it to the bottom */
+  width: 100%;         /* Full width of the container */
+  height: 10vh;        /* You can adjust this value based on the footer's height */
+  background-color: red;
+  border-top: 1px solid #ddd;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 1.5%;
+}
+
+// Exit Button for Step 1
+.step1-exit-btn {
+  background: transparent;
+  border: 2px solid #012B53;
+  padding: 10px 10px;
+  width: 18%;
+  height: 65%;
+  font-size: 100%;
+  color: #012B53;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.step1-exit-btn:hover {
+  background-color: #f0f0f0;
+}
+
+// Proceed Button for Step 1
+.step1-proceed-btn {
+  background-color: #C9C9C9;
+  color: #fff;
+  width: 18%;
+  height: 65%;
+  font-size: 100%;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+}
+
+.step1-proceed-btn.enabled {
+  background-color: #012B53;
+  cursor: pointer;
+}
+
+.step1-proceed-btn.enabled:hover {
+  background-color: #012B53;
+}
+
+
+
+
+
+$primary-color: #4caf50;
+$secondary-color: #002855;
+$dropdown-border-radius: 8px;
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'General Sans', sans-serif;
-    font-weight: 450; 
-    
-  }
-  
-  body {
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'General Sans', sans-serif;
+  font-weight: 450;
+}
 
-  
-  .container {
-    background-color: #ffffff;
-    width: 50vw;
-    
-    height: 75vh;
-  //   width: 1000px;
-  //   height: 860px;
-    padding: 40px;
-    border-radius: 12px 12px 0 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+
+.step2-title {
+  font-size: clamp(20px, 2.5vw, 24px);
+  margin-bottom: 20px;
+}
+
+.step2-progress-bar {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+  width: 38%;
+}
+
+.step2-progress-step {
+  flex: 1;
+  height: 1vh;
+  background-color: #ddd;
+  border-radius: 4px;
+
+  &.active {
+    background-color: $primary-color;
   }
-  
-  h1 {
-    font-size: clamp(20px, 2.5vw, 24px); // Fluid typography
-    margin-bottom: 20px;
-  }
-  
-  .progress-bar {
-    display: flex;
-    gap: 10px;
-    margin: 15px 0;
-    width: 38%;
-  }
-  
-  .step {
-    flex: 1;
-    height: 1vh;
-    background-color: #ddd;
-    border-radius: 4px;
-  }
-  
-  .step.active {
-    background-color: #4caf50;
-  }
-  
-  .step-text {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 20px;
-  }
-  
-  .form-section {
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-size: 18px;
-    margin-bottom: 5px;
-  }
-  
-  p {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 15px;
-  }
-  
-  .portfolio-form {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-  
-  .form-group {
-    flex: 1;
-  }
-  
+}
+
+.step2-text {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.step2-form-section {
+  margin-bottom: 20px;
+}
+
+.step2-heading {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.step2-description {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.step2-form {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.step2-form-group {
+  flex: 1;
+}
+
+.step2-label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.step2-input,
+.step2-textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.step2-textarea {
+  resize: none;
+}
+
+.step2-dropdown-container {
+  width: 100%;
+  margin: 20px 0;
+
   label {
     display: block;
-    font-size: 12px;
+    font-size: 14px;
     color: #555;
     margin-bottom: 5px;
   }
-  
-  input, textarea {
-    width: 100%;
+
+  .step2-dropdown {
+    width: 65%;
     padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  textarea {
-    resize: none;
-  }
-  
-  #portfolio-description {
-    height: 220px; // Larger height for this specific textarea
-  }
-  
-  input:focus, textarea:focus {
-    border-color: #4caf50;
-  }
-  
-  .footer {
-    width: 50vw;
-  height: 10vh;
-    background-color: #ffffff;
-    border-top: 1px solid #ddd;
-    
-    
-    padding: 15px 40px;
-    display: flex;
-    justify-content: flex-end;
-    border-radius: 0 0 12px 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    gap: 1.5%;
-  }
-  
-  .exit-btn {
-    background: transparent;
-    border: 2px solid #012B53;
-    padding: 10px 10px;
-    width: 18%;
-    height: 65%;
-    font-size: 100%;
-    
-    color: #012B53;
-    border-radius: 6px;
+    font-size: 16px;
+    border: 1px solid #D4D4D4;
+    border-radius: $dropdown-border-radius;
+    background-color: white;
+    color: #D4D4D4;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
   }
-  
-  .exit-btn:hover {
+}
+
+#portfolio-description {
+  height: 220px;
+}
+
+.step2-footer {
+  width: 50vw;
+  height: 10vh;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 1.5%;
+}
+
+.step2-exit-btn {
+  background: transparent;
+  border: 2px solid $secondary-color;
+  padding: 10px 10px;
+  width: 18%;
+  height: 70%;
+  font-size: 80%;
+  color: $secondary-color;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
     background-color: #f0f0f0;
   }
-  
-  .proceed-btn {
-    background-color: #ddd;
-    color: #fff;
-    width: 18%;
+}
+
+.step2-proceed-btn {
+  background-color: #ddd;
+  color: #fff;
+  width: 18%;
+  height: 70%;
+  font-size: 80%;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+
+  &.enabled {
+    background-color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($primary-color, 5%);
+    }
+  }
+}
+
+.step2-back-button {
+  display: flex;
+  align-items: center;
+  font-size: 110%;
+  color: $secondary-color;
+  height: 70%;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  .icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
+
+  &:focus {
+    outline: 2px solid lighten($secondary-color, 40%);
+  }
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal {
+    width: 28%;
     height: 65%;
-    font-size: 100%;
-    cursor: pointer;
-    
-    padding: 10px 10px;
-    border: none;
-    border-radius: 6px;
-   
-    transition: background-color 0.3s ease;
+    padding: 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    font-family: "General Sans", sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+
+    .step3-heading{
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      text-align: left;
+      font-weight: 400;
+    }
+
+    .step3-text{
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      text-align: left;
+      color: #666;
+    }
+
+    .step3-form{
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+
+      .form-group {
+        margin-bottom: 16px;
+
+        label {
+          font-size: 0.85rem;
+          margin-bottom: 4px;
+          color: #555;
+          display: block;
+        }
+
+        input,
+        textarea {
+          width: 95%;
+          padding: 12px;
+          border: 1px solid #D4D4D4;
+          border-radius: 8px;
+          font-size: 0.95rem;
+          font-family: "General Sans", sans-serif;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+          }
+        }
+
+        textarea {
+          resize: none;
+          height: 200px;
+        }
+      }
+
+      .step3-status-radio-group{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+        margin-top: auto; 
+        height: 20%;
+
+
+        button {
+          flex: 1;
+          padding: 12px;
+          border-radius: 8px;
+          
+          border: none;
+          cursor: pointer;
+          font-size: 0.95rem;
+          margin: 0 4px;
+
+          &.save-button {
+            background: #012b53;
+            color: #fff;
+            font-weight: 400;
+            
+
+            &:hover {
+              background: #012b53;
+            }
+          }
+
+          &.cancel-button {
+            background: #f8f9fa;
+            color: #012b53;
+            border: 2px solid #012B53;
+
+            &:hover {
+              background: #e2e6ea;
+            }
+          }
+        }
+      }
+    }
   }
-  
-  .proceed-btn.enabled {
-    background-color: #4caf50;
-    cursor: pointer;
-  }
-  
-  .proceed-btn.enabled:hover {
-    background-color: #45a049;
-  }
-  
-  
-  
+}
+
