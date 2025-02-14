@@ -226,6 +226,12 @@ export class DialogOverviewExampleDialog implements OnInit {
       }
     });
   }
+
+  // closeLeaveDialog() {
+  //   if (this.leaveDialogRef) {
+  //     this.leaveDialogRef.close(); // Close the dialog if it's open
+  //   }
+  // }
   openModal() {
     this.isModalVisible = true;
   }

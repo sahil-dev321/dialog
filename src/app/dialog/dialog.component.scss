@@ -274,7 +274,43 @@ $dropdown-border-radius: 8px;
   color: #555;
   margin-bottom: 5px;
 }
+.step2-dropdown{
+  width: 100%; // Ensure it takes up the full width for alignment
+    margin: 20px 0;
+    width: 65%; // Match width with input elements
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #D4D4D4;
+    border-radius: $dropdown-border-radius;
+    background-color: white;
+    color: #D4D4D4;
+    cursor: pointer;
+  
+    label {
+      display: block;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
 
+  
+    .dropdown {
+      width: 65%; // Match width with input elements
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #D4D4D4;
+      border-radius: $dropdown-border-radius;
+      background-color: white;
+      color: #D4D4D4;
+      cursor: pointer;
+  
+      &:focus {
+        outline: none;
+        
+      }
+    }
+
+}
 .step2-input,
 .step2-textarea {
   width: 100%;

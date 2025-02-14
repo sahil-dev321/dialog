@@ -7,6 +7,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { environment } from '../../../environments/environment';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-strategy',
@@ -19,7 +20,10 @@ export class CreateStrategyComponent {
   strategyDescription: string = '';
   showModal: boolean = true; // This will control the modal visibility
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private dialogRef: MatDialogRef<CreateStrategyComponent>
+  ) {}
 
   saveAndAssign() {
     const apiUrl = `${environment.apiUrl}/strategy/`;
@@ -39,14 +43,14 @@ export class CreateStrategyComponent {
     this.http.post(apiUrl, payload, { headers }).subscribe(
       (response) => {
         console.log('Strategy created successfully', response);
-        this.closeModal();
+        this.closeDialog;
       },
       (error) => {
         console.error('Error creating strategy', error);
       }
     );
   }
-  closeModal() {
-    this.showModal = false;
+  closeDialog(result?: string): void {
+    this.dialogRef.close(result); // Pass 'leave' or 'cancel'
   }
 }
