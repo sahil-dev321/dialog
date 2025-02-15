@@ -49,7 +49,7 @@
   
 
   <!-- Step 2: Strategy Selection -->
-  <mat-step [stepControl]="secondFormGroup">
+  <mat-step class="step2-form" [stepControl]="secondFormGroup">
     <div class="step2-form-section">
     <form class="step2-form-group" [formGroup]="secondFormGroup">
       <!-- <form class ="step2-form"[formGroup]="secondFormGroup"> -->
@@ -63,9 +63,10 @@
       <p class="step2-text">Step 2 of 3</p>
   
       <h2 class="step2-heading">Strategy</h2>
-      <p class="step2-description">Select a strategy for your portfolio.</p>
+      <p class="step2-description">Log in to access your account and continue where you left off.</p>
   
-      <mat-form-field class="step2-form-field">
+      <!-- <mat-form-field class="step2-form-field">
+        <p class="step2-dropdown-description">Assign a strategy for your portfolio "Prime Yield"</p>
         <mat-label class="step2-dropdown">Assign a Strategy</mat-label>
         <mat-select [(value)]="selectedStrategy" (selectionChange)="onStrategyChange($event)">
           <mat-option value="createStrategy">
@@ -75,9 +76,24 @@
             {{ strategy.name }}
           </mat-option>
         </mat-select>
+      </mat-form-field> -->
+
+      <p class="step2-dropdown-description">Assign a strategy for your portfolio "Prime Yield"</p>
+      <mat-form-field class="step2-form-field custom-dropdown">
+        <mat-label *ngIf="!selectedStrategy">-Select Strategy-</mat-label>
+        <mat-select [(value)]="selectedStrategy" (selectionChange)="onStrategyChange($event)">
+          <mat-option value="createStrategy" class="create-strategy-option">
+            <span class="icon">➕</span> Create new strategy and assign
+          </mat-option>
+          <mat-optgroup label="ALL STRATEGIES">
+            <mat-option *ngFor="let strategy of strategies" [value]="strategy.id">
+              {{ strategy.name }}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
       </mat-form-field>
-  
-  
+      
+
     </form>
     <footer class="step2-footer">
       <button mat-button matStepperPrevious class="step2-back-button">Back</button>
@@ -148,8 +164,8 @@
       <div class="step3-footer">
         <button mat-button matStepperPrevious class="step3-back-button">Back</button>
         <button mat-button class="step3-exit-btn" (click)="openLeaveDialog()">Exit</button>
-        <button mat-raised-button class="step3-proceed" (click)="printFormValues()">Create</button>
-        <button mat-raised-button class="step3-proceed-btn" (click)="createModelPortfolio()">Send</button>
+        <button mat-raised-button class="step3-proceed" (click)="onCreateClick()">Create</button>
+       
       </div>
     </form>
   </mat-step>

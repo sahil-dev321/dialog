@@ -26,7 +26,7 @@ import { environment } from '../../environments/environment';
 import { MatDialog } from '@angular/material/dialog'; // Import MatDialog
 import { LeaveComponent } from '../frames/leave/leave.component';
 import { CreateStrategyComponent } from '../frames/create-strategy/create-strategy.component';
-
+import { SuccessComponent } from '../frames/success/success.component';
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
@@ -97,22 +97,38 @@ export class DialogOverviewExampleDialog implements OnInit {
   }
 
   onStrategyChange(event: any) {
-    if (event.value === 'createStrategy') {
-      // You can open a dialog or perform some action when this option is selected
+    // if (event.value === 'createStrategy') {
+    //   // You can open a dialog or perform some action when this option is selected
+    //   const dialogRef = this.dialog.open(CreateStrategyComponent, {
+    //     width: '300px', // Adjust the width as needed
+    //     data: { message: 'Are you sure you want to leave without saving?' },
+    //   });
+
+    //   // dialogRef.afterClosed().subscribe((result) => {
+    //   //   if (result === 'leave') {
+    //   //     // Handle leave action, like navigating or closing
+    //   //     console.log('User decided to leave');
+    //   //   } else {
+    //   //     // Handle cancel action
+    //   //     console.log('User canceled the leave');
+    //   //   }
+    //   // });
+    // }
+    const selectedValue = event.value;
+    if (selectedValue === 'createStrategy') {
       const dialogRef = this.dialog.open(CreateStrategyComponent, {
-        width: '300px', // Adjust the width as needed
-        data: { message: 'Are you sure you want to leave without saving?' },
+        width: '300px',
+        data: { message: 'Create a new strategy' },
       });
 
       dialogRef.afterClosed().subscribe((result) => {
-        if (result === 'leave') {
-          // Handle leave action, like navigating or closing
-          console.log('User decided to leave');
-        } else {
-          // Handle cancel action
-          console.log('User canceled the leave');
+        if (result) {
+          // If a new strategy is created, update the list
+          this.fetchStrategies();
         }
       });
+    } else {
+      this.secondFormGroup.get('strategy')?.setValue(selectedValue); // Update the form control
     }
   }
 
@@ -184,7 +200,7 @@ export class DialogOverviewExampleDialog implements OnInit {
     const requestBody = {
       name: this.firstFormGroup.value.portfolioName,
       description: this.firstFormGroup.value.portfolioDescription,
-      strategy: 1,
+      strategy: this.secondFormGroup.value.strategy,
       status: this.thirdFormGroup.value.status,
       scripts: [
         {
@@ -201,7 +217,6 @@ export class DialogOverviewExampleDialog implements OnInit {
       .subscribe(
         (response) => {
           console.log('Portfolio created successfully:', response);
-          alert('Portfolio created successfully!');
         },
         (error) => {
           console.error('Error creating portfolio:', error);
@@ -227,6 +242,28 @@ export class DialogOverviewExampleDialog implements OnInit {
     });
   }
 
+  openSuccessDialog() {
+    const dialogRef = this.dialog.open(SuccessComponent, {
+      width: '300px', // Adjust the width as needed
+      data: { message: 'Are you sure you want to leave without saving?' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'leave') {
+        // Handle leave action, like navigating or closing
+        console.log('User decided to leave');
+      } else {
+        // Handle cancel action
+        console.log('User canceled the leave');
+      }
+    });
+  }
+
+  onCreateClick() {
+    this.createModelPortfolio();
+    this.openSuccessDialog();
+  }
+
   // closeLeaveDialog() {
   //   if (this.leaveDialogRef) {
   //     this.leaveDialogRef.close(); // Close the dialog if it's open
@@ -237,6 +274,4 @@ export class DialogOverviewExampleDialog implements OnInit {
   }
 
   // Function to close the modal
-
-  openSuccessDialog() {}
 }

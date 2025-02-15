@@ -1,100 +1,208 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
+// body {
+//     margin: 0;
+//     font-family: Arial, sans-serif;
+//     background-color: #f4f4f4;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100vh;
+//   }
 
 
   
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
+//   .container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     width: 100%;
+//   }
   
-  .modal {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 25%;
-    height:45vh;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+//   .modal {
+//     background: #fff;
+//     border-radius: 12px;
+//     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//     width: 25%;
+//     height:45vh;
+//     padding: 20px;
+//     text-align: center;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//   }
   
-  .modal-header {
-    margin-bottom: 16px;
-  }
-  
-
-
-  .icon-success {
-    color: #28a745;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10%;
-  }
-  
-  .icon-success svg {
-    width: 10vh;
-    height: 8vh;
-    margin-top: 7%;
-  }
-  
-  h2 {
-    font-size: 200%;
-    font-weight: 200;
-    color: #333;
-    margin: 0;
-  }
-
+//   .modal-header {
+//     margin-bottom: 16px;
+//   }
   
 
+
+//   .icon-success {
+//     color: #28a745;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-bottom: 10%;
+//   }
   
-  .modal-body p {
-    font-size: 100%;
-    color: #555;
-    margin: 0;
-  }
+//   .icon-success svg {
+//     width: 10vh;
+//     height: 8vh;
+//     margin-top: 7%;
+//   }
   
-  .modal-footer {
-    display: flex;
-    flex-direction: column;
+//   h2 {
+//     font-size: 200%;
+//     font-weight: 200;
+//     color: #333;
+//     margin: 0;
+//   }
+
+  
+
+  
+//   .modal-body p {
+//     font-size: 100%;
+//     color: #555;
+//     margin: 0;
+//   }
+  
+//   .modal-footer {
+//     display: flex;
+//     flex-direction: column;
     
-    align-items: center;
-    gap: 1vh;
-  }
+//     align-items: center;
+//     gap: 1vh;
+//   }
   
-  .btn {
-    border: none;
-    border-radius: 6px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
+//   .btn {
+//     border: none;
+//     border-radius: 6px;
+//     padding: 10px 20px;
+//     cursor: pointer;
+//     font-size: 14px;
 
-  }
+//   }
   
-  .btn.primary {
-    background-color: #012B53;
-    color: #fff;
-    height: 4.25vh;
-    width: 23vw;
-  }
+//   .btn.primary {
+//     background-color: #012B53;
+//     color: #fff;
+//     height: 4.25vh;
+//     width: 23vw;
+//   }
   
-  .btn.secondary {
-    background-color: #FFFFFF;
-    color: #333;
-    border: 1px solid #012B53;
-    height: 4.25vh;
-    width: 23vw;
-  }
+//   .btn.secondary {
+//     background-color: #FFFFFF;
+//     color: #333;
+//     border: 1px solid #012B53;
+//     height: 4.25vh;
+//     width: 23vw;
+//   }
   
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'General Sans', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2vw;  /* Dynamically adjust font size based on viewport width */
+  font-weight: 260;
+  margin-bottom: 6%;
+}
+
+p{
+  font-size: 1vw;
+  color: #404040;
+
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: white;
+  width: 45vw;
+  max-width: 500px;  /* Optional: limit the maximum width */
+  height: 50vh;
+  padding: 2.5vh;  /* Adjust padding for more flexibility */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+// .modal-icon {
+  
+//   margin-top: 2vh;
+ 
+  
+// }
+.modal-icon svg {
+  
+  width: 11vw;  // Set the width
+  height: 11vh; // Set the height
+  margin-bottom: 3.5vh;
+  padding-bottom: 0vh;
+
+}
+
+// .exit-icon {
+//   width: 10vh;  /* Maintain relative size */
+//   height: 10vh;
+// }
+
+.modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;  /* Relative gap between buttons */
+  margin-top: 5%;
+}
+
+.primary-btn,
+.secondary-btn,
+.cancel-btn {
+  height: 6vh;  /* Dynamically adjust button height based on viewport height */
+  font-size: 1vw;  /* Dynamically adjust font size */
+  padding: 0.1rem;  /* Add relative padding */
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.primary-btn {
+  background: #012B53;
+  color: white;
+}
+
+.secondary-btn {
+  background: #FFFFFF;
+  color: #012B53;
+  border: 1px solid #012B53;
+}
+
+.cancel-btn {
+  background: #F0F0F0;
+  color: #012B53;
+  border-radius: 8px;
+}
+
